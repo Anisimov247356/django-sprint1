@@ -1,4 +1,5 @@
-from django.shortcuts import render  # type: ignore
+from django.shortcuts import render
+from django.http import Http404
 
 
 posts = [
@@ -44,6 +45,8 @@ posts = [
     },
 ]
 
+posts_dict = {post['id']: post for post in posts}
+
 
 def index(request):
     """Список всех постов, главная страница."""
@@ -52,7 +55,9 @@ def index(request):
 
 def post_detail(request, id):
     """Страница просмотра поста."""
-    post = next((p for p in posts if p['id'] == id), None)
+    post = posts_dict.get(id)
+    if post is None:
+        raise Http404(f'Пост с id={id} не найден.')
     return render(request, 'blog/detail.html', {'post': post})
 
 
