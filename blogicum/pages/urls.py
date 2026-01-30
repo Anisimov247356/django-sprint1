@@ -4,18 +4,18 @@ from django.urls import path
 # Локальные импорты
 from . import views
 
-app_name = 'pages'
+app_name = "pages"
 
 
 urlpatterns = [
     path(
-        'about/',
+        "about/",
         views.about,
-        name='about',
+        name="about",
     ),
     path(
-        'rules/',
+        "rules/",
         views.rules,
-        name='rules',
+        name="rules",
     ),
 ]

@@ -14,7 +14,7 @@ def about(request):
     Returns:
         HttpResponse: отрендеренный шаблон страницы.
     """
-    return render(request, 'pages/about.html')
+    return render(request, "pages/about.html")
 
 
 def rules(request):
@@ -29,4 +29,4 @@ def rules(request):
     Returns:
         HttpResponse: отрендеренный шаблон страницы.
     """
-    return render(request, 'pages/rules.html')
+    return render(request, "pages/rules.html")
