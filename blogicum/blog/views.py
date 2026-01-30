@@ -57,6 +57,7 @@ posts_dict = {post['id']: post for post in posts}
 
 def index(request):
     """Список всех постов, главная страница."""
+
     return render(request, 'blog/index.html', {'posts': posts})
 
 
@@ -74,6 +75,7 @@ def post_detail(request, post_id: int):
     Returns:
         HttpResponse: отрендеренный шаблон страницы.
     """
+
     post = posts_dict.get(post_id)
     if post is None:
         raise Http404(f'Пост с id={post_id} не найден.')
@@ -91,6 +93,7 @@ def category_posts(request, category_slug: str):
     Returns:
         HttpResponse: отрендеренный шаблон страницы.
     """
+    
     return render(
         request,
         'blog/category.html',
