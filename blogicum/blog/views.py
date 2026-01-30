@@ -2,6 +2,7 @@
 from django.http import Http404
 from django.shortcuts import render
 
+
 # Данные постов
 posts = [
     {
@@ -16,7 +17,7 @@ posts = [
             'несчастный Робинзон Крузо, был выброшен '
             'полумёртвым на берег этого проклятого острова, '
             'который назвал островом Отчаяния.'
-        )
+        ),
     },
     {
         'id': 1,
@@ -34,7 +35,7 @@ posts = [
             'непременно спаслись бы. Теперь из его обломков мы могли бы '
             'построить баркас, на котором и выбрались бы из этого '
             'гиблого места.'
-        )
+        ),
     },
     {
         'id': 2,
@@ -48,17 +49,18 @@ posts = [
             'жалкие обломки, да и те видны только во время отлива. '
             'Весь этот день я хлопотал около вещей: укрывал и '
             'укутывал их, чтобы не испортились от дождя.'
-        )
+        ),
     },
 ]
 
 posts_dict = {post['id']: post for post in posts}
 
 
+
 def index(request):
     """Список всех постов, главная страница."""
-
     return render(request, 'blog/index.html', {'posts': posts})
+
 
 
 def post_detail(request, post_id: int):
@@ -75,11 +77,11 @@ def post_detail(request, post_id: int):
     Returns:
         HttpResponse: отрендеренный шаблон страницы.
     """
-
     post = posts_dict.get(post_id)
     if post is None:
         raise Http404(f'Пост с id={post_id} не найден.')
     return render(request, 'blog/detail.html', {'post': post})
+
 
 
 def category_posts(request, category_slug: str):
@@ -93,9 +95,8 @@ def category_posts(request, category_slug: str):
     Returns:
         HttpResponse: отрендеренный шаблон страницы.
     """
-    
     return render(
         request,
         'blog/category.html',
-        {'category_slug': category_slug}
+        {'category_slug': category_slug},
     )
